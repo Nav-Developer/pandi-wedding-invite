@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import EnvelopeIntro from "./EnvelopeIntro";
 import Letter from "./Letter";
@@ -12,6 +13,29 @@ import VideoIntro from "./VideoIntro";
 type Stage = "video" | "envelope" | "letter";
 
 const INTRO_VIDEO: string | null = "/video/intro.mp4";
+
+function CoupleBadge() {
+  return (
+    <div
+      className="pointer-events-none fixed z-[100] overflow-hidden rounded-full border-[3px] border-[#d9a85a] shadow-xl"
+      style={{
+        width: "clamp(130px, 15vw, 190px)",
+        height: "clamp(130px, 15vw, 190px)",
+        right: "3vw", // tweak these two to sit on the watermark
+        bottom: "11vh",
+        background: "#fff4d6",
+      }}
+    >
+      <Image
+        src="/images/couple.png"
+        alt="Couple"
+        fill
+        sizes="190px"
+        className="object-cover object-top"
+      />
+    </div>
+  );
+}
 
 function Inner() {
   const { lang } = useLang();
@@ -26,7 +50,6 @@ function Inner() {
           "radial-gradient(circle at 50% 30%, #fff4d6 0%, #f3d9a0 60%, #d9a85a 100%)",
       }}
     >
-      {/* language switch: visible from the envelope onward */}
       {stage !== "video" && <LanguageToggle />}
 
       <AnimatePresence mode="wait">
@@ -56,6 +79,8 @@ function Inner() {
           </motion.div>
         </>
       )}
+
+      {stage === "video" && <CoupleBadge />}
     </div>
   );
 }

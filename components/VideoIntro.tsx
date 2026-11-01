@@ -14,7 +14,7 @@ type Props = {
 };
 
 export default function VideoIntro({
-  src = "/intro.mp4",
+  src = "/video/INTRO.mp4",
   poster,
   maxSeconds = 10,
   onFinish,
