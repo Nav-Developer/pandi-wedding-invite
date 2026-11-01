@@ -9,6 +9,8 @@ const base =
 const solid = `${base} bg-gradient-to-b from-[#d4af37] to-[#a8802a] text-[#3d0610] shadow-md`;
 const outline = `${base} border border-[#8b0f20] text-[#8b0f20]`;
 
+const INVITE_IMG = "/images/invitation.png";
+
 export default function Actions() {
   const { c } = useLang();
   const names = `${c.groom} & ${c.bride}`;
@@ -66,18 +68,15 @@ export default function Actions() {
     }
   };
 
-  const rsvpUrl = `https://wa.me/${invitation.rsvpPhone}?text=${encodeURIComponent(c.rsvpMessage)}`;
-
   return (
     <div className="mx-auto flex w-full max-w-md flex-col gap-3">
       <motion.a
         {...tap}
-        href={rsvpUrl}
-        target="_blank"
-        rel="noreferrer"
+        href={INVITE_IMG}
+        download="wedding-invitation.png"
         className={solid}
       >
-        {c.rsvp}
+        {(c as any).download ?? "⬇ Download Invitation"}
       </motion.a>
       <div className="grid grid-cols-2 gap-3">
         {c.events.map((e: any, i: any) => (

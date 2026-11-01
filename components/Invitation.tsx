@@ -12,7 +12,7 @@ import VideoIntro from "./VideoIntro";
 
 type Stage = "video" | "envelope" | "letter";
 
-const INTRO_VIDEO: string | null = "/video/intro.mp4";
+const INTRO_VIDEO: string | null = "/video/INTRO.mp4";
 
 function CoupleBadge() {
   return (
