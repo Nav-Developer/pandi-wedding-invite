@@ -51,9 +51,13 @@ export const invitation = {
   countdownTarget: "2026-11-20T06:00:00+05:30",
   venue: {
     lines: ["Sri Gowmariyamman Temple", "Marriage Hall,", "Veerapandi"],
-    mapUrl: "https://maps.google.com/?q=Sri+Gowmariyamman+Temple+Veerapandi",
+    // mapUrl: "https://maps.google.com/?q=Sri+Gowmariyamman+Temple+Veerapandi",
+    // directionsUrl:
+    //   "https://www.google.com/maps/dir/?api=1&destination=Sri+Gowmariyamman+Temple+Veerapandi",
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=9.963294,77.440865",
     directionsUrl:
-      "https://www.google.com/maps/dir/?api=1&destination=Sri+Gowmariyamman+Temple+Veerapandi",
+      "https://www.google.com/maps/dir/?api=1&destination=9.963294,77.440865",
   },
   // TODO: put the family WhatsApp number here: country code + number, no + or spaces
   rsvpPhone: "919999999999",

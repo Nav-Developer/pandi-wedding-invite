@@ -7,9 +7,13 @@ import { useLang } from "./LangProvider";
 const base =
   "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-display text-xs tracking-widest uppercase sm:text-sm";
 const solid = `${base} bg-gradient-to-b from-[#d4af37] to-[#a8802a] text-[#3d0610] shadow-md`;
+const maroon = `${base} bg-gradient-to-b from-[#a3132a] to-[#6e0a18] text-[#f3d9a0] shadow-md`;
 const outline = `${base} border border-[#8b0f20] text-[#8b0f20]`;
 
 const INVITE_IMG = "/images/invitation.png";
+// const MAP_URL = "https://maps.app.goo.gl/z5JS7F3qjaNvqSDh6";
+const MAP_URL =
+  "https://www.google.com/maps/search/?api=1&query=Arulmigu+Maariyamman+Temple+XC7P%2BW48+Virapandi+Tamil+Nadu";
 
 export default function Actions() {
   const { c } = useLang();
@@ -57,9 +61,7 @@ export default function Actions() {
     if (navigator.share) {
       try {
         await navigator.share({ title: names, text: c.shareText, url });
-      } catch {
-        /* cancelled */
-      }
+      } catch {}
     } else {
       window.open(
         `https://wa.me/?text=${encodeURIComponent(`${c.shareText} ${url}`)}`,
@@ -77,6 +79,15 @@ export default function Actions() {
         className={solid}
       >
         {(c as any).download ?? "⬇ Download Invitation"}
+      </motion.a>
+      <motion.a
+        {...tap}
+        href={MAP_URL}
+        target="_blank"
+        rel="noreferrer"
+        className={maroon}
+      >
+        {(c as any).directions ?? "📍 Get Directions"}
       </motion.a>
       <div className="grid grid-cols-2 gap-3">
         {c.events.map((e: any, i: any) => (
