@@ -1,0 +1,69 @@
+"use client";
+
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import EnvelopeIntro from "./EnvelopeIntro";
+import Letter from "./Letter";
+import Petals from "./Petals";
+import LanguageToggle from "./LanguageToggle";
+import { LangProvider, useLang } from "./LangProvider";
+import VideoIntro from "./VideoIntro";
+
+type Stage = "video" | "envelope" | "letter";
+
+const INTRO_VIDEO: string | null = "/video/intro.mp4";
+
+function Inner() {
+  const { lang } = useLang();
+  const [stage, setStage] = useState<Stage>(INTRO_VIDEO ? "video" : "envelope");
+
+  return (
+    <div
+      data-lang={lang}
+      className="relative min-h-dvh"
+      style={{
+        background:
+          "radial-gradient(circle at 50% 30%, #fff4d6 0%, #f3d9a0 60%, #d9a85a 100%)",
+      }}
+    >
+      {/* language switch: visible from the envelope onward */}
+      {stage !== "video" && <LanguageToggle />}
+
+      <AnimatePresence mode="wait">
+        {stage === "video" && INTRO_VIDEO && (
+          <VideoIntro
+            key="video"
+            src={INTRO_VIDEO}
+            poster="/images/temple.png"
+            maxSeconds={10}
+            onFinish={() => setStage("envelope")}
+          />
+        )}
+        {stage === "envelope" && (
+          <EnvelopeIntro key="envelope" onOpened={() => setStage("letter")} />
+        )}
+      </AnimatePresence>
+
+      {stage === "letter" && (
+        <>
+          <Petals />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Letter />
+          </motion.div>
+        </>
+      )}
+    </div>
+  );
+}
+
+export default function Invitation() {
+  return (
+    <LangProvider>
+      <Inner />
+    </LangProvider>
+  );
+}

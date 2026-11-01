@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-script: var(--font-script), cursive;
+  --font-serif: var(--font-serif), Georgia, serif;
+  --font-display: var(--font-display), serif;
+  --font-tamil: var(--font-tamil), sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+body {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 18px;
+}
+
+/* cream paper */
+.bg-parchment {
+  background:
+    radial-gradient(circle at 50% 0%, #fff8e1, transparent 70%),
+    linear-gradient(180deg, #f9e8b8, #f3d995);
+}
+
+/* deep kumkum red with gold dots */
+.bg-temple {
+  background-color: #5c0a16;
+  background-image:
+    radial-gradient(circle at 50% 0%, #7f1224 0, transparent 65%),
+    radial-gradient(circle, rgba(212, 175, 55, 0.2) 1.2px, transparent 1.7px);
+  background-size:
+    auto,
+    22px 22px;
+}
+
+/* glowing gold lettering */
+.gold-text {
+  background: linear-gradient(180deg, #fff6cf 0%, #f7d77a 45%, #d9972b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.5));
+}
+
+/* ---------- Tamil mode ----------
+   When the wrapper has data-lang="ta", swap fonts and turn off the Latin-only
+   styling (capitals, wide letter spacing, italics) that does not suit Tamil script. */
+[data-lang="ta"] {
+  font-family: var(--font-tamil-serif), var(--font-tamil), sans-serif;
+}
+[data-lang="ta"] .font-serif {
+  font-family: var(--font-tamil-serif), var(--font-tamil), serif !important;
+  line-height: 1.7;
+}
+[data-lang="ta"] .font-display {
+  font-family: var(--font-tamil), sans-serif !important;
+  letter-spacing: 0.03em !important;
+  text-transform: none !important;
+  line-height: 1.5;
+}
+[data-lang="ta"] .font-script {
+  font-family: var(--font-tamil-script), var(--font-tamil), cursive !important;
+}
+[data-lang="ta"] .italic {
+  font-style: normal !important;
+}
