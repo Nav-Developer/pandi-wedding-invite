@@ -13,6 +13,7 @@ import VideoIntro from "./VideoIntro";
 type Stage = "video" | "envelope" | "letter";
 
 const INTRO_VIDEO: string | null = "/video/INTRO.mp4";
+const INSTAGRAM_URL = "https://www.instagram.com/nk_freaky/";
 
 function CoupleBadge() {
   return (
@@ -21,7 +22,7 @@ function CoupleBadge() {
       style={{
         width: "clamp(130px, 15vw, 190px)",
         height: "clamp(130px, 15vw, 190px)",
-        right: "3vw", // tweak these two to sit on the watermark
+        right: "3vw",
         bottom: "11vh",
         background: "#fff4d6",
       }}
@@ -34,6 +35,19 @@ function CoupleBadge() {
         className="object-cover object-top"
       />
     </div>
+  );
+}
+
+function Credit() {
+  return (
+    <a
+      href={INSTAGRAM_URL}
+      target="_blank"
+      rel="noreferrer"
+      className="pointer-events-auto fixed bottom-2 left-2 z-[100] whitespace-nowrap rounded-full bg-[#2a0810]/40 px-2.5 py-1 font-display text-[8px] tracking-wider text-[#f3d9a0]/70 uppercase backdrop-blur-sm transition hover:text-[#f3d9a0] sm:text-[9px]"
+    >
+      By Naveen · @nk_freaky ↗
+    </a>
   );
 }
 
@@ -77,6 +91,7 @@ function Inner() {
           >
             <Letter />
           </motion.div>
+          <Credit />
         </>
       )}
 
