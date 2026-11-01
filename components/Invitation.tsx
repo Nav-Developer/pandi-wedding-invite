@@ -38,16 +38,23 @@ function CoupleBadge() {
   );
 }
 
+const WEBSITE_URL = "https://naveen-kumar-zeta.vercel.app/";
+
 function Credit() {
+  const link =
+    "transition hover:text-[#f3d9a0] hover:underline underline-offset-2";
   return (
-    <a
-      href={INSTAGRAM_URL}
-      target="_blank"
-      rel="noreferrer"
-      className="pointer-events-auto fixed bottom-2 left-2 z-[100] whitespace-nowrap rounded-full bg-[#2a0810]/40 px-2.5 py-1 font-display text-[8px] tracking-wider text-[#f3d9a0]/70 uppercase backdrop-blur-sm transition hover:text-[#f3d9a0] sm:text-[9px]"
-    >
-      By Naveen · @nk_freaky ↗
-    </a>
+    <div className="pointer-events-auto fixed bottom-2 left-2 z-[100] flex items-center gap-1.5 whitespace-nowrap rounded-full bg-[#2a0810]/40 px-2.5 py-1 font-display text-[8px] tracking-wider text-[#f3d9a0]/70 uppercase backdrop-blur-sm sm:text-[9px]">
+      <span>By Naveen</span>
+      <span>·</span>
+      <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className={link}>
+        Instagram ↗
+      </a>
+      <span>·</span>
+      <a href={WEBSITE_URL} target="_blank" rel="noreferrer" className={link}>
+        Website ↗
+      </a>
+    </div>
   );
 }
 
